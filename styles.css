@@ -1,49 +1,67 @@
-import tkinter as tk
-
-gravitasi = {
-    'Merkurius': 0.377,
-    'Venus': 0.903,
-    'Mars': 0.379,
-    'Jupiter': 2.528,
-    'Saturnus': 1.065,
-    'Uranus': 0.886,
-    'Neptunus': 1.14
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(to right, #1e003c, #3a0ca3, #9d4edd);
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-size: cover;
 }
 
-def hitung_berat():
-    try:
-        bobot = float(entry_berat.get())
-        planet = var_planet.get()
-        hasil = bobot * gravitasi[planet]
-        label_hasil.config(text=f"🌟 Beratmu di {planet} adalah {hasil:.2f} kg 🌟")
-    except ValueError:
-        label_hasil.config(text="⚠️ Masukkan berat yang valid!")
+.container {
+  background-color: rgba(0, 0, 30, 0.85);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  text-align: center;
+  width: 320px;
+}
 
-# GUI setup
-root = tk.Tk()
-root.title("Planet Weight Calc 💫")
-root.geometry("400x400")
-root.configure(bg="#2c2f4a")  # Dark space color
+h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #ffebfb;
+}
 
-tk.Label(root, text="💫 Berat di Planet Lain 💫", font=("Comic Sans MS", 18, "bold"), bg="#2c2f4a", fg="white").pack(pady=10)
+label {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+}
 
-tk.Label(root, text="Masukkan berat badanmu (kg):", font=("Comic Sans MS", 12), bg="#2c2f4a", fg="white").pack()
-entry_berat = tk.Entry(root, font=("Arial", 14), justify="center")
-entry_berat.pack(pady=5)
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #e0c3fc;
+  color: #3a0ca3;
+  font-weight: bold;
+}
 
-tk.Label(root, text="Pilih planet tujuan:", font=("Comic Sans MS", 12), bg="#2c2f4a", fg="white").pack(pady=5)
+button {
+  margin-top: 20px;
+  background-color: #7209b7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-var_planet = tk.StringVar()
-var_planet.set("Mars")
-dropdown = tk.OptionMenu(root, var_planet, *gravitasi.keys())
-dropdown.config(font=("Comic Sans MS", 12), bg="purple", fg="white")
-dropdown.pack(pady=5)
+button:hover {
+  background-color: #f72585;
+}
 
-btn = tk.Button(root, text="🚀 Hitung Berat!", font=("Comic Sans MS", 14), bg="#ff6ec7", fg="white", command=hitung_berat)
-btn.pack(pady=20)
-
-label_hasil = tk.Label(root, text="", font=("Comic Sans MS", 14), bg="#2c2f4a", fg="#ffeb3b")
-label_hasil.pack()
-
-root.mainloop()
-
+#hasil {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #ffd6ff;
+}
