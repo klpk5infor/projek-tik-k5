@@ -1,1 +1,49 @@
+import tkinter as tk
+
+gravitasi = {
+    'Merkurius': 0.377,
+    'Venus': 0.903,
+    'Mars': 0.379,
+    'Jupiter': 2.528,
+    'Saturnus': 1.065,
+    'Uranus': 0.886,
+    'Neptunus': 1.14
+}
+
+def hitung_berat():
+    try:
+        bobot = float(entry_berat.get())
+        planet = var_planet.get()
+        hasil = bobot * gravitasi[planet]
+        label_hasil.config(text=f"🌟 Beratmu di {planet} adalah {hasil:.2f} kg 🌟")
+    except ValueError:
+        label_hasil.config(text="⚠️ Masukkan berat yang valid!")
+
+# GUI setup
+root = tk.Tk()
+root.title("Planet Weight Calc 💫")
+root.geometry("400x400")
+root.configure(bg="#2c2f4a")  # Dark space color
+
+tk.Label(root, text="💫 Berat di Planet Lain 💫", font=("Comic Sans MS", 18, "bold"), bg="#2c2f4a", fg="white").pack(pady=10)
+
+tk.Label(root, text="Masukkan berat badanmu (kg):", font=("Comic Sans MS", 12), bg="#2c2f4a", fg="white").pack()
+entry_berat = tk.Entry(root, font=("Arial", 14), justify="center")
+entry_berat.pack(pady=5)
+
+tk.Label(root, text="Pilih planet tujuan:", font=("Comic Sans MS", 12), bg="#2c2f4a", fg="white").pack(pady=5)
+
+var_planet = tk.StringVar()
+var_planet.set("Mars")
+dropdown = tk.OptionMenu(root, var_planet, *gravitasi.keys())
+dropdown.config(font=("Comic Sans MS", 12), bg="purple", fg="white")
+dropdown.pack(pady=5)
+
+btn = tk.Button(root, text="🚀 Hitung Berat!", font=("Comic Sans MS", 14), bg="#ff6ec7", fg="white", command=hitung_berat)
+btn.pack(pady=20)
+
+label_hasil = tk.Label(root, text="", font=("Comic Sans MS", 14), bg="#2c2f4a", fg="#ffeb3b")
+label_hasil.pack()
+
+root.mainloop()
 
